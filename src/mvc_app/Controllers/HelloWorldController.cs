@@ -16,11 +16,14 @@ namespace mvc_app.Controllers
         // 
         // GET: /HelloWorld/Welcome/
 
-        public string Welcome(string test, string name, int age = 1, int id = 0)
+        public IActionResult Welcome(string test, string name, int age = 1, int id = 0)
         {
-            return HtmlEncoder.Default.Encode(
-                "Name: " + name + "; Age: " + age + "; ID: " + id + "; test: " + test);
-            
+            ViewData["test"] = test;
+            ViewData["name"] = name;
+            ViewData["age"] = age;
+            ViewData["id"] = id;
+
+            return View();            
         }
     }
 }
